@@ -1,3 +1,4 @@
+#pragma once
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the NEDCLIB_EXPORTS
 // symbol defined on the command line. this symbol should not be defined on any project
@@ -5,9 +6,17 @@
 // NEDCLIB_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #ifdef NEDCLIB_EXPORTS
+#if _WIN32 || _WIN64
 #define NEDCLIB_API __declspec(dllexport)
 #else
+#define NEDCLIB_API __attribute__((visibility("default")))
+#endif
+#else
+#if _WIN32 || _WIN64
 #define NEDCLIB_API __declspec(dllimport)
+#else
+#define NEDCLIB_API
+#endif
 #endif
 
 
