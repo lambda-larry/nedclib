@@ -68,7 +68,7 @@ NEDCLIB_API unsigned char signature_str[0x30];
 int dotcodelen;
 unsigned char bin_header[24];
 
-void raw_header(unsigned char *bindata, unsigned char *data, int size)
+void raw_header(const unsigned char *bindata, unsigned char *data, int size)
 {
 	int i,j,k;
 	int global1, global2;
@@ -146,10 +146,10 @@ void interleave_dotcode(unsigned char *data, unsigned char *interleave, int dotc
 			interleave[(i*dotcodeinterleave)+dotcodepointer] = data[i];
 	}
 
-	
+
 }
 
-NEDCLIB_API int bin2raw(char *binfile, char *rawfile)
+NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 {
 	unsigned char data[64];
 	unsigned char bin[0x840];
@@ -256,7 +256,7 @@ NEDCLIB_API int bin2raw(char *binfile, char *rawfile)
 	return 0;
 }
 
-NEDCLIB_API int bin2raw_d(unsigned char *bin, unsigned char *raw, int size)
+NEDCLIB_API int bin2raw_d(const unsigned char *bin, unsigned char *raw, int size)
 {
 	unsigned char data[64];
 	unsigned char dotcodetemp[0xB60];
@@ -350,7 +350,7 @@ NEDCLIB_API int bin2raw_d(unsigned char *bin, unsigned char *raw, int size)
 	return 0;
 }
 
-NEDCLIB_API int bin2raw_f(unsigned char *bin, char *rawfile, int size)
+NEDCLIB_API int bin2raw_f(const unsigned char *bin, const char *rawfile, int size)
 {
 	unsigned char data[64];
 	unsigned char dotcodetemp[0xB60];
@@ -468,7 +468,7 @@ void deinterleave_dotcode(unsigned char *data, unsigned char *interleave, int do
 		data[i] = interleave[(i*dotcodeinterleave)+dotcodepointer];
 }
 
-NEDCLIB_API int raw2bin(char *rawfile, char *binfile)
+NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 {
 	unsigned char data[64];
 	unsigned char erasure[64] = {
@@ -629,7 +629,7 @@ NEDCLIB_API int raw2bin(char *rawfile, char *binfile)
 	return (numbin>0)?0:-1;
 }
 
-NEDCLIB_API int fixraw(char *rawfile)
+NEDCLIB_API int fixraw(const char *rawfile)
 {
 	unsigned char data[255];
 

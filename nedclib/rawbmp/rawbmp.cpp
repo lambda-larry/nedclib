@@ -67,7 +67,7 @@ void clear_dcs(void)
 			_810mod[i][j]=0;
 }
 
-NEDCLIB_API int raw2bmp(char *rawfile, char *bmpfile)
+NEDCLIB_API int raw2bmp(const char *rawfile, const char *bmpfile)
 {
 	int i,j;
 	FILE *f, *g;
@@ -125,7 +125,7 @@ NEDCLIB_API int raw2bmp(char *rawfile, char *bmpfile)
 	return 0;
 }
 
-NEDCLIB_API int raw2bmp_f(unsigned char *rawdata, char *bmpfile)
+NEDCLIB_API int raw2bmp_f(const unsigned char *rawdata, const char *bmpfile)
 {
 	int i;
 	FILE *g;
@@ -178,7 +178,7 @@ NEDCLIB_API int raw2bmp_f(unsigned char *rawdata, char *bmpfile)
 	return 0;
 }
 
-NEDCLIB_API int bmp2raw(char *bmpfile, char *rawfile)
+NEDCLIB_API int bmp2raw(const char *bmpfile, const char *rawfile)
 {
 	FILE *f;
 	int filelen;

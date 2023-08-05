@@ -15,7 +15,7 @@ NEDCLIB_API int verbose=0;
 unsigned char *bitstore=NULL;
 
 #define MAX_LOG_STR 256
-void log_only_write(char* str, ...)
+void log_only_write(const char* str, ...)
 {
 	char tmpstr[MAX_LOG_STR];
 	va_list args;
@@ -26,7 +26,7 @@ void log_only_write(char* str, ...)
 		fprintf(log,tmpstr);
 }
 
-NEDCLIB_API void log_write(char* str, ...)
+NEDCLIB_API void log_write(const char* str, ...)
 {
 	char tmpstr[MAX_LOG_STR];
 	va_list args;
@@ -77,7 +77,7 @@ NEDCLIB_API unsigned long bits_written=0;
 
 int bits_buf=0;
 
-inline unsigned long read_bits(int count, unsigned char *buf)
+inline unsigned long read_bits(int count, const unsigned char *buf)
 {
 	int i;
 	unsigned long tmp=0;
@@ -556,7 +556,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 
 }
 
-tree_node* read_huffman_tree(unsigned char *buf)
+tree_node* read_huffman_tree(const unsigned char *buf)
 {
 	int tree_pointer=0;
 	int tree;
@@ -641,8 +641,8 @@ tree_node* read_huffman_tree(unsigned char *buf)
 
 NEDCLIB_API int skip_lz77 = 0;
 
-NEDCLIB_API int NVPK_compress (unsigned char *buf, int size, int compression_level, int lzwindow, int lzsize, int method, FILE *f, unsigned char *bitdata)
-{	
+NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compression_level, int lzwindow, int lzsize, int method, FILE *f, unsigned char *bitdata)
+{
 	static unsigned short literals[MAX_LITERALS], move_t[MAX_TABLE_SIZE], size_t[MAX_TABLE_SIZE];
 	int literals_offset=0,move_offset=0,size_offset=0;
 	int buf_offset, buf_back_offset;
@@ -1029,7 +1029,7 @@ NEDCLIB_API int NVPK_compress (unsigned char *buf, int size, int compression_lev
 
 unsigned char decompress_buffer[0x100000];
 
-int read_tree_value(tree_node *tree, unsigned char *buf)
+int read_tree_value(tree_node *tree, const unsigned char *buf)
 {
 	tree_node *ptr;
 	int tmp;
@@ -1057,7 +1057,7 @@ int read_tree_value(tree_node *tree, unsigned char *buf)
 	}
 }
 
-NEDCLIB_API int vpk_decompress (unsigned char *vpk, FILE *f)
+NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 {
 	int bitcountsmove[32] = {
 		0, 0, 0, 0, 0, 0, 0, 0,

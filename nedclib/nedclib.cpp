@@ -174,21 +174,21 @@ NEDCLIB_API void nedclib_version(void)
 	//printf("Copyright 2007 CaitSith2\n\n");
 }
 
-NEDCLIB_API int is_vpk(unsigned char *bindata)
+NEDCLIB_API int is_vpk(const unsigned char *bindata)
 {
 	if((bindata[0]!='v')||(bindata[1]!='p')||(bindata[2]!='k')||(bindata[3]!='0'))
 		return 0;
 	return 1;
 }
 
-NEDCLIB_API int is_nes(unsigned char *nesdata)
+NEDCLIB_API int is_nes(const unsigned char *nesdata)
 {
 	if((nesdata[0]!='N')||(nesdata[1]!='E')||(nesdata[2]!='S')||(nesdata[3]!=0x1A))
 		return 0;
 	return 1;
 }
 
-NEDCLIB_API int is_bmp(char *bmpfile)
+NEDCLIB_API int is_bmp(const char *bmpfile)
 {
 	FILE *f;
 	unsigned short bmp_header;

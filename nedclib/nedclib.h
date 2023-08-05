@@ -52,34 +52,34 @@ int close_raw(FILE *f, int return_res);
 
 //--- common external functions ---
 NEDCLIB_API void nedclib_version(void);
-NEDCLIB_API int is_vpk(unsigned char *bindata);
-NEDCLIB_API int is_nes(unsigned char *nesdata);
-NEDCLIB_API int is_bmp(char *bmpfile);
+NEDCLIB_API int is_vpk(const unsigned char *bindata);
+NEDCLIB_API int is_nes(const unsigned char *nesdata);
+NEDCLIB_API int is_bmp(const char *bmpfile);
 
 extern NEDCLIB_API int version_major;
 extern NEDCLIB_API int version_minor;
 extern NEDCLIB_API int MultiStrip;
 
 //--- RAW2BMP FUNCTIONS ---
-NEDCLIB_API int raw2bmp(char *rawfile, char *bmpfile);
-NEDCLIB_API int bmp2raw(char *bmpfile, char *rawfile);
-NEDCLIB_API int raw2bmp_f(unsigned char *rawdata, char *bmpfile);
+NEDCLIB_API int raw2bmp(const char *rawfile, const char *bmpfile);
+NEDCLIB_API int bmp2raw(const char *bmpfile, const char *rawfile);
+NEDCLIB_API int raw2bmp_f(const unsigned char *rawdata, const char *bmpfile);
 extern NEDCLIB_API int smooth;
 
 //--- BIN2RAW FUNCTIONS ---
-NEDCLIB_API int bin2raw(char *binfile, char *rawfile);
-NEDCLIB_API int raw2bin(char *rawfile, char *binfile);
-NEDCLIB_API int fixraw(char *rawfile);
-NEDCLIB_API int bin2raw_d(unsigned char *bindata, unsigned char *rawdata, int size);
-NEDCLIB_API int bin2raw_f(unsigned char *bin, char *rawfile, int size);
+NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile);
+NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile);
+NEDCLIB_API int fixraw(const char *rawfile);
+NEDCLIB_API int bin2raw_d(const unsigned char *bindata, unsigned char *rawdata, int size);
+NEDCLIB_API int bin2raw_f(const unsigned char *bin, const char *rawfile, int size);
 extern NEDCLIB_API int signature;
 extern NEDCLIB_API unsigned char signature_str[];
 extern NEDCLIB_API int dpi_multiplier;
 
 //--- NEVPK FUNCTIONS ---
-NEDCLIB_API int NVPK_compress (unsigned char *buf, int size, int compression_level, int lzwindow, int lzsize, int method, FILE *f, unsigned char *bitdata=NULL);
-NEDCLIB_API int vpk_decompress (unsigned char *vpk, FILE *f);
-NEDCLIB_API void log_write(char* str, ...);
+NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compression_level, int lzwindow, int lzsize, int method, FILE *f, unsigned char *bitdata=NULL);
+NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f);
+NEDCLIB_API void log_write(const char* str, ...);
 extern NEDCLIB_API FILE *log;
 extern NEDCLIB_API int verbose;
 extern NEDCLIB_API unsigned long bits_written;
