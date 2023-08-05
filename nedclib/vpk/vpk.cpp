@@ -129,7 +129,7 @@ inline void write_bits(unsigned long data, int count, FILE *f)
 				*bitstore++ = (unsigned char)((bits_w & 0x0000FF00) >>  8);
 				*bitstore++ = (unsigned char)((bits_w & 0x000000FF) >>  0);
 			}
-			
+
 			bitsleft_w = 32;
 			bits_w = 0;
 		}
@@ -189,7 +189,7 @@ void sort_tree(tree_node *tree[], int count)
 
 inline void free_huffman_tree(tree_node *tree)
 {
-	
+
 	if(tree == NULL)
 		return;
 	if(tree[0].node == 1)
@@ -246,7 +246,7 @@ tree_node* get_treenode(tree_node *tree, int bitcount, int numbits=0, int value=
 				for(i=0;i<numbits;i++)
 					tree[0].value |= (((value >> i) & 1) << ((numbits - 1) - i));
 				tree[0].value |= (numbits << 24);
-				
+
 				return tree;
 			}
 			else
@@ -310,7 +310,7 @@ void write_huffman_tree(tree_node *tree, FILE *f,  int root=1)
 	}
 	else
 	{
-		
+
 		write_bits(0,1,f);
 		write_bits(tree[0].data,8,f);
 		if(root)
@@ -321,7 +321,7 @@ void write_huffman_tree(tree_node *tree, FILE *f,  int root=1)
 			if(f!=NULL)
 				log_write("\n");
 	}
-	
+
 }
 
 NEDCLIB_API int best_move=0;
@@ -430,7 +430,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 				{
 					if((bitcounts[i+1] * 2) >= bitcounts[i])
 						j=1;
-					
+
 					if(i<(max_bitcount-3))
 					{
 						if((bitcounts[i] < 25))
@@ -461,7 +461,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 			}
 			if(f!=NULL)
 			log_write("%.5d:%.3d\n",bitcounts[i],i);
-			
+
 
 			ptr = create_treenode();
 			ptr[0].count = bitcounts[i];
@@ -537,8 +537,8 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 				pointer[i+1] = NULL;
 			}
 		}
-		
-		
+
+
 		pointer[treenodes-1] = ptr;
 	}
 
@@ -569,8 +569,8 @@ tree_node* read_huffman_tree(const unsigned char *buf)
 //	memset(huffman_tree,0,sizeof(huffman_tree));
 
 	pointer[0] = NULL;
-	
-	do 
+
+	do
 	{
 		i=read_bits(1,buf);
 		if(i==0)
@@ -592,21 +592,21 @@ tree_node* read_huffman_tree(const unsigned char *buf)
 			tree_pointer--;
 			if(tree_pointer >= 1)
 			{
-				
+
 				ptr = create_treenode();
 				ptr[0].data = 0;
 				ptr[0].node = 1;
 				ptr[0].left = pointer[tree_pointer - 1];
 				ptr[0].right = pointer[tree_pointer];
 				pointer[tree_pointer-1] = ptr;
-				
+
 //				huffman_tree[tree_pointer-1].left = tree_pointer - 1;
 //				huffman_tree[tree_pointer-1].right = tree_pointer;
 			}
 			//tree_pointer--;
 		}
-			
-		
+
+
 
 	} while (tree_pointer > 0);
 
@@ -630,10 +630,10 @@ tree_node* read_huffman_tree(const unsigned char *buf)
 		return ptr;
 	}
 
-	
-	
+
+
 }
- 
+
 #define NUM_BITS get_bitsize(lzsize - 1)
 
 #define MAX_TABLE_SIZE 0x10000
@@ -671,10 +671,10 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 
 	if(!skip_lz77)
 	{
-	
+
 	if(compression_level != 0)
 	{
-		
+
 		if(f!=NULL)
 			log_write("LZ compressing data\n");
 
@@ -780,7 +780,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 			}
 		}
 	}
-		
+
 
 
 	flush_bits(NULL);
@@ -796,7 +796,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 	//fputc(method&0xFF,f);
 
 	literals_offset = 0;
-	
+
 
 	if(compression_level == 0)
 	{
@@ -885,7 +885,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 
 		move_offset = 0;
 		size_offset = 0;
-		
+
 		while(literals[literals_offset] != 0x1FF)
 		{
 			if(literals[literals_offset] == 0x100)
@@ -899,7 +899,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 					{
 						j+=8;
 						j/=4;
-						
+
 					/*	if(get_bitsize(j)<3)
 						{
 							tmp = get_treenode(movetree,3);
@@ -918,10 +918,10 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 							{
 								write_bits(j,movetree[0].data,f);
 							}
-							
-							
+
+
 					//	}
-						
+
 					}
 					else
 					{
@@ -943,7 +943,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 							}
 							else
 								write_bits(j,movetree[0].data,f);
-							
+
 					//	}
 
 						j=move_t[move_offset];
@@ -968,7 +968,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 					//	}
 					}
 					move_offset++;
-					
+
 				}
 				else
 				{
@@ -983,7 +983,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 					}
 					else
 						write_bits(move_t[move_offset++],movetree[0].data,f);
-					
+
 				}
 
 				j = get_bitsize(size_t[size_offset]);
@@ -997,7 +997,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 				}
 				else
 					write_bits(size_t[size_offset++],sizetree[0].data,f);
-				
+
 			}
 			else
 			{
@@ -1006,16 +1006,16 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 			}
 			literals_offset++;
 		}
-		
+
 
 		flush_bits(f);
-		
+
 		free_huffman_tree(movetree);
 		free_huffman_tree(sizetree);
 	}
 
-	
-	
+
+
 	bitstore=NULL;
 
 	if(bitdata!=NULL)
@@ -1072,7 +1072,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 		0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	
+
 	struct tree_node *ptr;
 
 	int decompress_buffer_pointer=0;
@@ -1100,7 +1100,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 		printf("Error: Invalid vpk data\n");
 		return 1;
 	}
-	
+
 	size=read_bits(32,vpk);
 	method=read_bits(8,vpk);
 
@@ -1113,7 +1113,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 	movetree = read_huffman_tree(vpk);
 	sizetree = read_huffman_tree(vpk);
 
-	
+
 	if((movetree[0].node != 0) || (movetree[0].data != 0))
 	{
 		log_write("***** Move Tree Structure *****\n");
@@ -1144,7 +1144,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 			move_tt = read_tree_value(movetree,vpk);
 
 			bitcountsmove[get_bitsize(move_tt)]++;
-			
+
 			if(method==1)
 			{
 				if(move_tt < 3)
@@ -1175,8 +1175,8 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 			}
 			log_only_write("\n");
 
-			
-			
+
+
 		}
 	}
 
@@ -1184,7 +1184,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 		write_bits(decompress_buffer[i],8,f);
 	flush_bits(f);
 
-	
+
 	if((movetree[0].node != 0) || (movetree[0].data != 0))
 	{
 		log_write("***** Frequency Table (move) *****\n");
@@ -1220,7 +1220,7 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 		}
 		log_write("\n");
 	}
-	
+
 
 	free_huffman_tree(movetree);
 	free_huffman_tree(sizetree);

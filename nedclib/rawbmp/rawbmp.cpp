@@ -47,7 +47,7 @@ void write_bmp(FILE *f)
 	bmpheader[0x2B] = (i >> 8) & 0xFF;
 	bmpheader[0x2C] = (i >> 16) & 0xFF;
 	bmpheader[0x2D] = (i >> 24) & 0xFF;
-	
+
 
 	fwrite(bmpheader,1,62,f);
 	for(j=0;j<width;j++)
@@ -131,7 +131,7 @@ NEDCLIB_API int raw2bmp_f(const unsigned char *rawdata, const char *bmpfile)
 	FILE *g;
 	char filename[256];
 
-	memcpy(&raw[0][0],rawdata,0xB60);	
+	memcpy(&raw[0][0],rawdata,0xB60);
 
 	//f=fopen(rawfile,"rb");
 	//if(f==NULL)

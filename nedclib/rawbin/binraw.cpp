@@ -22,7 +22,7 @@ unsigned char ShortDotCodeHeader[0x30] = {
 
 				0x00, 0x00, //Header, last 8 bytes
 	0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 
+	0x00, 0x00,
 				0x00,		//Header Checksum
 					  0x57  //Global Checksum 2
 };
@@ -46,7 +46,7 @@ unsigned char LongDotCodeHeader[0x30] = {
 
 				0x00, 0x00, //Header, last 8 bytes
 	0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 
+	0x00, 0x00,
 				0x00,		//Header Checksum
 					  0x57  //Global Checksum 2
 };
@@ -75,7 +75,7 @@ void raw_header(const unsigned char *bindata, unsigned char *data, int size)
 
 	for(i=0;i<0x30;i++)
 		data[i]=((size==0x81c)?LongDotCodeHeader[i]:ShortDotCodeHeader[i]);
-	
+
 
 	for(i=0,j=0;i<12;i++)
 		j ^= bindata[i];
@@ -157,7 +157,7 @@ NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 	unsigned char raw[0xB60];
 	int dotcodepointer=0;
 	int dotcodeinterleave;
-	
+
 	int result;
 	int i,j,k,l,count;
 	int temp;
@@ -188,7 +188,7 @@ NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 		if(bin_type==0)
 		{
 			raw_header(bin,data,size);
-			
+
 			append_error_info(data,0x40,0x10);
 			interleave_dotcode(data,dotcodetemp,0,size);
 		}
@@ -250,7 +250,7 @@ NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 		fwrite(raw,1,j+k,g);
 		fclose(g);
 	}
-	
+
 	free_rs();
 
 	return 0;
@@ -262,7 +262,7 @@ NEDCLIB_API int bin2raw_d(const unsigned char *bin, unsigned char *raw, int size
 	unsigned char dotcodetemp[0xB60];
 	int dotcodepointer=0;
 	int dotcodeinterleave;
-	
+
 	int result;
 	int i,j,k,l,count;
 	int temp;
@@ -357,7 +357,7 @@ NEDCLIB_API int bin2raw_f(const unsigned char *bin, const char *rawfile, int siz
 	unsigned char raw[0xB60];
 	int dotcodepointer=0;
 	int dotcodeinterleave;
-	
+
 	int result;
 	int i,j,k,l,count;
 	int temp;
@@ -487,7 +487,7 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 	unsigned char raw[0x15C28];
 	int dotcodepointer=0;
 	int dotcodeinterleave;
-	
+
 	int result;
 	int i,j,k;
 	int size;
@@ -523,7 +523,7 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 		j/=0x66;
 		if(k>0)
 			j++;
-		
+
 		dotcodeinterleave=bin_header[7];
 		dotcodepointer=0;
 
@@ -555,8 +555,8 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 			//return -2		//Not an NEDC dotcode.
 		}
 
-		
-			
+
+
 		for(i=0;i<0x30;i++)
 			bin[i]=data[i];
 
@@ -618,14 +618,14 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 				fwrite(bin,1,((bin_header[4]-bin_header[5])*bin_header[7]),g);
 				break;
 			}
-			
+
 			fclose(g);
 			numbin++;
 		}
 	}
-	
+
 	free_rs();
-	
+
 	return (numbin>0)?0:-1;
 }
 
@@ -639,7 +639,7 @@ NEDCLIB_API int fixraw(const char *rawfile)
 	int dotcodeinterleave;
 
 	int num_dotcodes;
-	
+
 	int result;
 	int i,j,k;
 	int x,y;
@@ -707,7 +707,7 @@ NEDCLIB_API int fixraw(const char *rawfile)
 
 		interleave_dotcode(data,dotcodetemp,0,size);
 
-		
+
 		for(i=1;i<dotcodeinterleave;i++)
 		{
 			deinterleave_dotcode(data,dotcodetemp,i,size,dotcodeinterleave);

@@ -59,7 +59,7 @@ int count_raw(FILE *f)
 			result=fread(&i,1,2,f);
 			count++;
 		}
-		
+
 	}
 	fseek(f,0,SEEK_SET);
 	return count;
@@ -107,8 +107,8 @@ void read_next_raw(FILE *f)
 	{
 		fclose(f);
 	}
-	
-	
+
+
 }
 
 void write_bmp(FILE *f)
@@ -215,7 +215,7 @@ int main(int argc, char **argv)
 	VERBOSE("Reading Input File\n")
 	if (OptD)
 	{
-		
+
 		if (filelen == 0x158E)
 		{
 			fseek(f,62,SEEK_SET);
@@ -285,7 +285,7 @@ int main(int argc, char **argv)
 			}
 		}
 	}
-	
+
 	// - Debugging text,  piped to a text file, in the form of "raw2dcs <infile> <outfile> > <textfile>
 	/*for (i=0;i<(989*dpi_multiplier);i++)
 	{
@@ -293,7 +293,7 @@ int main(int argc, char **argv)
 		{
 			if(j>1000)
 				break;
-			if (dcsbmp[i][j]) 
+			if (dcsbmp[i][j])
 			{
 				printf("X");
 			}
@@ -309,7 +309,7 @@ int main(int argc, char **argv)
 
 }
 
-		
+
 
 
 

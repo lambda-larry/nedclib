@@ -31,7 +31,7 @@ int count_bin(FILE *f)
 	}
 	else
 	{
-		bin_type = 1;	
+		bin_type = 1;
 		fseek(f,0,SEEK_SET);
 	}
 	data = (unsigned char*)malloc(0x840); //Worst case bin file size, no error correction.
@@ -40,7 +40,7 @@ int count_bin(FILE *f)
 	while(read_next_bin(f,data))
 		count++;
 	fseek(f,0,SEEK_SET);	//Rewind back to first bin.
-	
+
 
 	free(data);
 	return count;
@@ -70,7 +70,7 @@ int count_raw(FILE *f)
 {
 	int i=0,count=0;
 	unsigned char *data;
-	
+
 
 	data = (unsigned char*)malloc(0xB60);	//Worst case raw file size.
 	if(data==NULL)
@@ -153,7 +153,7 @@ int read_next_raw(FILE *f, unsigned char *rawdata)
 		return 0;	//A dotcode file must have at least 12 dotcode blocks.
 					//due to the standard of 8 byte header + 16 byte error correction.
 	}
-		
+
 }
 
 void backtrack_raw(FILE *f)
