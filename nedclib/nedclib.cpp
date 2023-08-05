@@ -216,6 +216,8 @@ NEDCLIB_API int MultiStrip=0;
 
 
 
+#ifdef NEDCLIB_PLATFORM_WIN
+
 #ifdef _MANAGED
 #pragma managed(push, off)
 #endif
@@ -238,6 +240,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 #ifdef _MANAGED
 #pragma managed(pop)
+#endif
+
 #endif
 
 NEDCLIB_API int version_major = VERSION_MAJOR;

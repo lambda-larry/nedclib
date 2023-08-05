@@ -1,8 +1,17 @@
 #pragma once
-// The following ifdef block is the standard way of creating macros which make exporting 
+
+#if _WIN32 || _WIN64
+#define NEDCLIB_PLATFORM_WIN
+#elif __unix__
+#define NEDCLIB_PLATFORM_UNIX
+#else
+#error "Unknown platform"
+#endif
+
+// The following ifdef block is the standard way of creating macros which make exporting
 // from a DLL simpler. All files within this DLL are compiled with the NEDCLIB_EXPORTS
 // symbol defined on the command line. this symbol should not be defined on any project
-// that uses this DLL. This way any other project whose source files include this file see 
+// that uses this DLL. This way any other project whose source files include this file see
 // NEDCLIB_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #ifdef NEDCLIB_EXPORTS
