@@ -11,6 +11,7 @@ is released with some e-reader support, then the raw files will be useful then.
 */
 
 #include <stdio.h>
+#include "nedclib.h"
 #include "dcs.h"
 
 

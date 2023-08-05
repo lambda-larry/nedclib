@@ -52,6 +52,8 @@ struct tree_node {
 struct tree_node *movetree;
 struct tree_node *sizetree;
 
+tree_node* read_huffman_tree(const unsigned char *buf);
+
 int get_bitsize(unsigned long data)
 {
 

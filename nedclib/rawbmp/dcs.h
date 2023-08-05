@@ -35,8 +35,8 @@ unsigned char bmpheader2[62] =
 unsigned char bmpdata[352][992];
 
 
-//unsigned char bmpdata1[44][0x7C];
-//unsigned char bmpdata2[44][0x50];
+unsigned char bmpdata1[44][0x7C];
+unsigned char bmpdata2[44][0x50];
 
 int bmp_invert;
 
@@ -141,8 +141,8 @@ extern unsigned char _810mod[28][130];
 extern unsigned char bmpheader1[];
 extern unsigned char bmpheader2[];
 extern unsigned char bmpdata[352][992];
-//extern unsigned char bmpdata1[44][0x7C];
-//extern unsigned char bmpdata2[44][80];
+extern unsigned char bmpdata1[44][0x7C];
+extern unsigned char bmpdata2[44][80];
 extern unsigned char modtable[];
 extern unsigned char demodtable[32];
 //extern unsigned short addressbar[2][29];
