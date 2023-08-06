@@ -80,19 +80,19 @@ int main(int argc, char* argv[])
 
 	for(i=1;i<argc;i++)
 	{
-		if(!_stricmp(argv[i],"-i"))
+		if(!strcmp(argv[i],"-i"))
 		{
 			i++;
 			file_in=i;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-o"))
+		if(!strcmp(argv[i],"-o"))
 		{
 			i++;
 			file_out=i;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-c"))
+		if(!strcmp(argv[i],"-c"))
 		{
 			if(operation == 2)
 			{
@@ -102,7 +102,7 @@ int main(int argc, char* argv[])
 			operation = 1;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-d"))
+		if(!strcmp(argv[i],"-d"))
 		{
 			if(operation == 1)
 			{
@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
 			operation = 2;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-level"))
+		if(!strcmp(argv[i],"-level"))
 		{
 			level=strtoul(argv[++i],0,0);
 			if(level>3)
@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
 			}
 			continue;
 		}
-		if(!_stricmp(argv[i],"-method"))
+		if(!strcmp(argv[i],"-method"))
 		{
 			method=strtoul(argv[++i],0,0);
 			if(method>1)
@@ -132,7 +132,7 @@ int main(int argc, char* argv[])
 			}
 			continue;
 		}
-		if(!_stricmp(argv[i],"-lzwindow"))
+		if(!strcmp(argv[i],"-lzwindow"))
 		{
 			lzwindow=strtoul(argv[++i],0,0);
 			/*if(lzwindow > 32768)
@@ -142,7 +142,7 @@ int main(int argc, char* argv[])
 			}*/
 			continue;
 		}
-		if(!_stricmp(argv[i],"-lzsize"))
+		if(!strcmp(argv[i],"-lzsize"))
 		{
 			lzsize=strtoul(argv[++i],0,0);
 			/*if(lzsize> 32768)
@@ -152,12 +152,12 @@ int main(int argc, char* argv[])
 			}*/
 			continue;
 		}
-		if(!_stricmp(argv[i],"-verbose"))
+		if(!strcmp(argv[i],"-verbose"))
 		{
 			verbose = 1;
 		}
 
-		if(!_stricmp(argv[i],"-log"))
+		if(!strcmp(argv[i],"-log"))
 		{
 			i++;
 			if(fopen_s(&log,argv[i],"w")!=0)

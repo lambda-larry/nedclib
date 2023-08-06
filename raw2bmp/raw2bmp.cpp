@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
 	for (i=1;i<argc;i++)
 	{
-		if(!_stricmp(argv[i],"-i"))
+		if(!strcmp(argv[i],"-i"))
 		{
 			if((i+1)==argc) continue;
 			i++;
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 			i--;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-o"))
+		if(!strcmp(argv[i],"-o"))
 		{
 			if((i+1)==argc) continue;
 			i++;
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 			i--;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-dpi"))
+		if(!strcmp(argv[i],"-dpi"))
 		{
 			if((i+1)==argc) continue;
 			i++;
@@ -85,12 +85,12 @@ int main(int argc, char* argv[])
 			}
 			continue;
 		}
-		if(!_stricmp(argv[i],"-multistrip"))
+		if(!strcmp(argv[i],"-multistrip"))
 		{
 			MultiStrip = 1;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-smooth"))
+		if(!strcmp(argv[i],"-smooth"))
 		{
 			smooth = 1;
 			continue;

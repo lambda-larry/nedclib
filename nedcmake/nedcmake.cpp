@@ -412,71 +412,71 @@ int main(int argc, char* argv[])
 	for(i=1;i<argc;i++)
 	{
 
-		if(!_stricmp(argv[i],"-region"))
+		if(!strcmp(argv[i],"-region"))
 		{
 			i++;
 			region = atoi(argv[i]);
 			continue;
 		}
-		if(!_stricmp(argv[i],"-type"))
+		if(!strcmp(argv[i],"-type"))
 		{
 			i++;
 			apptype = atoi(argv[i]);
 			continue;
 		}
-		if(!_stricmp(argv[i],"-title"))
+		if(!strcmp(argv[i],"-title"))
 		{
 			i++;
 			process_title(argv[i],numtitles,mode,region,1);
 			numtitles++;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-name"))
+		if(!strcmp(argv[i],"-name"))
 		{
 			i++;
 			process_title(argv[i],0,mode,region,1);
 			continue;
 		}
-		if(!_stricmp(argv[i],"-o"))
+		if(!strcmp(argv[i],"-o"))
 		{
 			i++;
 			basename=i;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-i"))
+		if(!strcmp(argv[i],"-i"))
 		{
 			i++;
 			filename=i;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-bin"))
+		if(!strcmp(argv[i],"-bin"))
 		{
 			bin = 1;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-raw"))
+		if(!strcmp(argv[i],"-raw"))
 		{
 			raw = 1;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-bmp"))
+		if(!strcmp(argv[i],"-bmp"))
 		{
 			bmp = 1;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-fill"))
+		if(!strcmp(argv[i],"-fill"))
 		{
 			i++;
 			fill = atoi(argv[i]);
 			continue;
 		}
-		if(!_stricmp(argv[i],"-music"))
+		if(!strcmp(argv[i],"-music"))
 		{
 			i++;
 			music=atoi(argv[i]);
 			continue;
 		}
-		if(!_stricmp(argv[i],"-titlemode"))
+		if(!strcmp(argv[i],"-titlemode"))
 		{
 			i++;
 			mode=atoi(argv[i]);
@@ -517,7 +517,7 @@ int main(int argc, char* argv[])
 			}
 			continue;
 		}
-		if(!_stricmp(argv[i],"-dcsize"))
+		if(!strcmp(argv[i],"-dcsize"))
 		{
 			i++;
 			if(argv[i][0] == '0')
@@ -526,14 +526,14 @@ int main(int argc, char* argv[])
 				cardsize=0x51C;
 			continue;
 		}
-		if(!_stricmp(argv[i],"-save"))
+		if(!strcmp(argv[i],"-save"))
 		{
 			i++;
 			allowsave=atoi(argv[i]);
 			continue;
 		}
 
-		if(!_stricmp(argv[i],"-dpi"))
+		if(!strcmp(argv[i],"-dpi"))
 		{
 			i++;
 			switch(atoi(argv[i]))
@@ -555,7 +555,7 @@ int main(int argc, char* argv[])
 			continue;
 		}
 
-		if((!_stricmp(argv[i],"-help"))||(!_stricmp(argv[i],"-?")))
+		if((!strcmp(argv[i],"-help"))||(!strcmp(argv[i],"-?")))
 		{
 			usage(1);
 			return 1;
