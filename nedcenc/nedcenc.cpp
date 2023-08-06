@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "../nedclib/nedclib.h"
+#include <nedclib.h>
 
 
 int main(int argc, char* argv[])

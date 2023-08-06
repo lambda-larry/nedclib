@@ -4,7 +4,7 @@
 #include <malloc.h>
 #include <string.h>
 
-#include "../nedclib/nedclib.h"
+#include <nedclib.h>
 
 
 // If compiling on VS 2005, comment out fopen_s and vsprintf_s completely.

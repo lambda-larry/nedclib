@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-#include "../nedclib.h"
+#include <nedclib.h>
 
 #include "dcs.h" //RAW2BMP, BMP2RAW
 
