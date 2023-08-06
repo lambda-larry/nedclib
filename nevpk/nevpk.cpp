@@ -278,7 +278,7 @@ int main(int argc, char* argv[])
 							best_move = b_move;
 							best_size = l - 65536;
 						}*/
-						printf("Filesize: %d, lzwindow: %d, lzsize: %d          ",((bitsize==0xFFFFFFFF)?0:bitsize/8),k,j);
+						printf("Filesize: %lu, lzwindow: %d, lzsize: %d          ", bitsize == 0xFFFFFFFF ? 0 : bitsize / 8, k, j);
 						printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
 						printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
 						printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
@@ -328,7 +328,7 @@ int main(int argc, char* argv[])
 			{
 				for(k=1;k<lzsize;k+=2)
 				{
-					printf("Filesize: %d, %d, %d                                     ",((bitsize==0xFFFFFFFF)?0:bitsize/8),(lzwindow-1-j),(lzsize-1-k));
+					printf("Filesize: %lu, %d, %d                                     ", bitsize==0xFFFFFFFF ? 0 : bitsize / 8, lzwindow - 1 - j, lzsize - 1 - k);
 							printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
 							printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
 							printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");

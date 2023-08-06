@@ -381,10 +381,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 		if(max_bitcount < j)
 			max_bitcount = j;
 
-		//if(j<3)
-		//	bitcounts[3]++;
-		//else
-			bitcounts[j]++;
+		bitcounts[j]++;
 	}
 
 	if(skip_huffman)
@@ -485,7 +482,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 			treeroot[0].look_up[i] = (tree_node*)(NULL + 1);
 	}
 	if(f!=NULL)
-	log_write("\n");
+		log_write("\n");
 	sort_tree(pointer,treenodes);
 
 	while(treenodes > 1)

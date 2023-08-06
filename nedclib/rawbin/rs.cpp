@@ -399,7 +399,7 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 						if ((s[i+1-j] != 0xFF) && (lambda[j] != 0xFF))
 		       				tmp = alpha_to[(s[i+1-j]+lambda[j])%0xFF];
 						else
-						tmp = 0;
+							tmp = 0;
 						omega[i] ^= tmp;
 					}
 				}
