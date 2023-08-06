@@ -20,7 +20,7 @@ void log_only_write(const char* str, ...)
 	vsnprintf(tmpstr,MAX_LOG_STR-1,str,args);
 	va_end(args);
 	if(log!=NULL)
-		fprintf(log,tmpstr);
+		fprintf(log, "%s", tmpstr);
 }
 
 NEDCLIB_API void log_write(const char* str, ...)
@@ -31,9 +31,9 @@ NEDCLIB_API void log_write(const char* str, ...)
 	vsnprintf(tmpstr,MAX_LOG_STR-1,str,args);
 	va_end(args);
 	if(verbose==1)
-		printf(tmpstr);
+		printf("%s", tmpstr);
 	if(log!=NULL)
-		fprintf(log,tmpstr);
+		fprintf(log, "%s", tmpstr);
 }
 
 struct tree_node {
