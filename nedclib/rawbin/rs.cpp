@@ -42,11 +42,11 @@ void invert_error_bytes(unsigned char *data, int len)
 
 void reverse_byte_order(unsigned char *data, int len)
 {
-	for(int i=0,x=0;i<(len>>1);i++) 
-	{ 
+	for(int i=0,x=0;i<(len>>1);i++)
+	{
 		x=data[i];
 		data[i]=data[len-i-1];
-		data[len-i-1]=x; 
+		data[len-i-1]=x;
 	}
 }
 
@@ -228,14 +228,14 @@ int correct_errors(unsigned char *data, int dtalen, int errlen, unsigned char *e
 	invert_error_bytes(data,errlen);
 	reverse_byte_order(data,dtalen);
 	return result;
-	
+
 }
 
 
 /* Performs ERRORS+ERASURES decoding of RS codes. If decoding is successful, writes
 the codeword into recd[] itself. Otherwise recd[] is unaltered except in the
-erased positions where it is set to zero. 
-  First "no_eras" erasures are declared by the calling program. Then, the 
+erased positions where it is set to zero.
+  First "no_eras" erasures are declared by the calling program. Then, the
 maximum # of errors correctable is t_after_eras = floor((2*tt-no_eras)/2). If the number
 of channel errors is not greater than "t_after_eras" the transmitted codeword
  will be recovered. Details of algorithm can be found
@@ -247,7 +247,7 @@ int eras_dec_rs(int *eras_pos,int no_eras)
   register int i,j,r,u,q,tmp,tmp1,tmp2,num1,num2,den,pres_root,pres_loc;
   unsigned char phi[2*d_tt+1],tmp_pol[2*d_tt+1]; /* The erasure locator in polynomial form */
   int U,syn_err,discr_r,deg_phi,deg_lambda,L,deg_omega,t_after_eras;
-  unsigned char lambda[2*d_tt+1],s[2*d_tt+1],lambda_pr[2*d_tt+1];/* Err+Eras Locator poly and syndrome poly */ 
+  unsigned char lambda[2*d_tt+1],s[2*d_tt+1],lambda_pr[2*d_tt+1];/* Err+Eras Locator poly and syndrome poly */
   unsigned char b[2*d_tt+1],T[2*d_tt+1],omega[2*d_tt+1];
   unsigned char syn_error=0, root[2*d_tt], z[d_tt+1], err[d_nn], reg[2*d_tt+1] ;
   unsigned char loc[2*d_tt],count = 0;
@@ -313,7 +313,7 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 			for (i=0;i < 2*tt+1;i++) b[i] = lambda[i];
    		}
 		while (++r <= 2*tt) /* r is the step number */
-		{ 
+		{
 			/* Compute discrepancy at the r-th step in poly-form */
 			discr_r = 0;
 			for (i=0;i < 2*tt+1;i++)
@@ -347,11 +347,11 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 					/* 2 lines below: B(x) <-- inv(discr_r) * lambda(x) */
 					for (i=0;i < 2*tt+1;i++)
 						b[i] = (lambda[i] == 0)? 0 : alpha_to[(index_of[lambda[i]]-index_of[discr_r]+nn)%0xFF];
-					for (i=0;i < 2*tt+1;i++) lambda[i] = T[i]; 
+					for (i=0;i < 2*tt+1;i++) lambda[i] = T[i];
 			   }
 			   else
 			   {
-					for (i=0;i < 2*tt+1;i++) lambda[i] = T[i]; 
+					for (i=0;i < 2*tt+1;i++) lambda[i] = T[i];
 					/* 3 lines below: B(x) <-- x*B(x) */
 					tmp_pol[0] = 0;
 					for (i=1;i < 2*tt+1;i++) tmp_pol[i] = b[i-1];
@@ -361,10 +361,10 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 		}
 /* Put lambda(x) into index form */
 		make_rev(lambda,2*tt+1);
-    
+
 /* Compute deg(lambda(x)) */
 		deg_lambda = 2*tt;
-		while ((lambda[deg_lambda] == 0xFF) && (deg_lambda > 0)) 
+		while ((lambda[deg_lambda] == 0xFF) && (deg_lambda > 0))
 			--deg_lambda;
 		if (deg_lambda <= 2*tt)
 		{
@@ -376,18 +376,18 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 				 q = 1 ;
 				 for (j=1; j <= deg_lambda; j++)
 					if (reg[j] != 0xFF)
-					{ 
+					{
 						reg[j] = (reg[j]+j)%0xFF ;
 						q ^= alpha_to[(reg[j])%0xFF] ;
 					} ;
 				 if (!q)        /* store root (index-form) and error location number */
-				 { 
+				 {
 					root[count] = i;
 					loc[count] = nn-i;
 					count++;
 				 };
 			} ;
- 
+
 			if (deg_lambda == count) /* correctable error */
 			{
 /* Compute err+eras evaluator poly omega(x) = s(x)*lambda(x) (modulo x**(nn-kk)). in poly-form */
@@ -400,7 +400,7 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 		       				tmp = alpha_to[(s[i+1-j]+lambda[j])%0xFF];
 						else
 						tmp = 0;
-						omega[i] ^= tmp;	
+						omega[i] ^= tmp;
 					}
 				}
 				omega[2*tt] = 0;
@@ -413,9 +413,9 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 				lambda_pr[2*tt] = 0;
 /* Compute deg(omega(x)) */
 				deg_omega = 2*tt;
-				while ((omega[deg_omega] == 0) && (deg_omega > 0)) 
+				while ((omega[deg_omega] == 0) && (deg_omega > 0))
 					--deg_omega;
-/* Compute error values in poly-form. num1 = omega(inv(X(l))), 
+/* Compute error values in poly-form. num1 = omega(inv(X(l))),
   num2 = inv(X(l))**(b0-1) and den = lambda_pr(inv(X(l))) all in poly-form */
 				for (j=0;j < count;j++)
 				{
@@ -424,7 +424,7 @@ int eras_dec_rs(int *eras_pos,int no_eras)
 					num1 = 0;
 					for (i=0;i < deg_omega+1;i++)
 					{
-						if (omega[i] != 0) 
+						if (omega[i] != 0)
 							tmp = alpha_to[(index_of[omega[i]]+i*pres_root)%0xFF];
 						else
 							tmp = 0;

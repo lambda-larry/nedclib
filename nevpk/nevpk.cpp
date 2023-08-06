@@ -20,12 +20,12 @@
 //		return 1;
 //	else
 //		return 0;
-//	
+//
 //}
 //
 //int vsprintf_s(char *string, int sizeinbytes, const char *format, va_list ap)
 //{
-//	
+//
 //	vsprintf(string,format,ap);
 //	return 0;
 //}
@@ -204,7 +204,7 @@ int main(int argc, char* argv[])
 	stream_close(out);
 	*/
 	//return 0;
-	
+
 	log_write("Input file: %s\n",argv[file_in]);
 	log_write("Output file: %s\n",argv[file_out]);
 	log_write("Operation: %s\n",(operation==1)?"Compress":"Decompress");
@@ -222,7 +222,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	log_write("\n");
-	
+
 
 	//f=;
 	if(fopen_s(&f,argv[file_in],"rb")!=0)
@@ -296,7 +296,7 @@ int main(int argc, char* argv[])
 								b_size=best_size;
 							}
 						}
-						else if (result==3)  //Window size is invalid, break out of the 
+						else if (result==3)  //Window size is invalid, break out of the
 						{					 //Size loop, and try next window size.
 							break;
 						}
@@ -382,7 +382,7 @@ int main(int argc, char* argv[])
 		i=NVPK_compress(vpk_buf,i,level,lzwindow,lzsize,method,f);
 	}
 	else
-	{	
+	{
 		if(fopen_s(&f,argv[file_out],"wb")!=0)
 		{
 			printf("Unable to open output file %s\n",argv[file_out]);
@@ -397,6 +397,6 @@ int main(int argc, char* argv[])
 	j=i;
 
 	free(vpk_buf);
-	
+
 	return 0;
 }

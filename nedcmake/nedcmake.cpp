@@ -78,7 +78,7 @@ void usage(int extended=0)
 	printf("This tool can auto compress bins to vpks, using default options of\n");
 	printf("lzwindow 16384, lzsize 2048, compression method 0, and compression level 2\n");
 	printf("if the input file is not already vpk compressed\n");
-	
+
 	printf("additionally, if you supply an iNES standard .nes file, mapper 0, 1 PRG rom\n");
 	printf("1 CHR rom,  the rom will be encoded for you.\n");
 
@@ -124,7 +124,7 @@ void usage(int extended=0)
 
 }
 
-unsigned char jistable [] = 
+unsigned char jistable [] =
 {
 	0x40, 0x49, 0x00, 0x94, 0x90, 0x93, 0x95, 0x66, 0x69, 0x6A,
 	0x96, 0x7B, 0x43, 0x5D, 0x44, 0x5E, 0x4F, 0x50, 0x51, 0x52,
@@ -205,7 +205,7 @@ void process_title(char *str, int titlenum, int cardmode, int region, int store_
 		}
 		return;
 	}
-	
+
 	if((titlenum==0)||(cardmode==CARD_LONG_NO)||(cardmode==CARD_LONG_YES))
 	{
 		if(region!=1)
@@ -330,7 +330,7 @@ void process_title(char *str, int titlenum, int cardmode, int region, int store_
 				title[titlenum][0] |= k << 4;
 			}
 
-			
+
 
 
 		}
@@ -370,7 +370,7 @@ void process_title(char *str, int titlenum, int cardmode, int region, int store_
 				printf("\"%s\"\n",jistitle);
 			}
 		}
-			
+
 
 	}
 }
@@ -560,7 +560,7 @@ int main(int argc, char* argv[])
 			usage(1);
 			return 1;
 		}
-				
+
 	}
 	for(i=0;i<numtitles;i++)
 		process_title(&title_store[i][0],i,mode,region,0);
@@ -599,7 +599,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	
+
 	//f=fopen(argv[filename],"rb");
 	//if(f==NULL)
 	if(fopen_s(&f,argv[filename],"rb"))
@@ -690,7 +690,7 @@ int main(int argc, char* argv[])
 	}
 
 	fclose(f);
-	
+
 	if(region!=0)
 	{
 		j = 12;
@@ -759,7 +759,7 @@ int main(int argc, char* argv[])
 		cardheader[4] += 2;
 		for(j=0;j<0x0C;j++)
 			carddata[cardoffset++] = cardheader[j];
-		
+
 		for(j=0;j<settitlesize;j++)
 		{
 			carddata[cardoffset++] = title[0][j];
@@ -778,7 +778,7 @@ int main(int argc, char* argv[])
 			carddata[cardoffset-3] = 0;
 			carddata[cardoffset-4] = 0;
 		}
-		
+
 		for(j=1;j<=numcards;j++)
 			for(k=0;k<cardtitlesize;k++)
 				carddata[cardoffset++] = title[j][k];
@@ -787,7 +787,7 @@ int main(int argc, char* argv[])
 		printf("card %.2d\\%.2d",i,numcards);
 		if(bin)
 		{
-			
+
 			if(basename)
 				sprintf_s(fn,255,"%s.%.2d.bin",argv[basename],i);
 			else

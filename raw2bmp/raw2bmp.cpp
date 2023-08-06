@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 			continue;
 		}
 	}
-	
+
 	if((OptI < 1) || (OptO < 1) || ((OptI != OptO) && (MultiStrip == 0)))
 	{
 		usage();
@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
 			{
 				printf("Error converting %s to %s\n",argv[InFileList[i]],argv[OutFileList[j]]);
 			}
-			
+
 		}
 	}
 

@@ -318,10 +318,10 @@ void eight_ten_demodulate(void)
 		}
 	}
 }
-			
+
 
 void reversebmp(void)
-{	
+{
 	int i, j, bmp_flip=1;
 	int length,mask,width;
 
@@ -362,7 +362,7 @@ void reversebmp(void)
 				dcsbmp[(i*8)+7][j] = (bmpdata[(width-1)-j][i] >> 0) & 0x01;
 			}
 		}
-			
+
 		if (bmp_flip)
 		{
 			for (i=0;i<width/2;i++)
@@ -375,7 +375,7 @@ void reversebmp(void)
 				}
 			}
 		}
-				
+
 	/*}
 	if (bmplen == 0x50)
 	{
@@ -420,7 +420,7 @@ void reversebmp(void)
 				}
 			}
 		}
-				
+
 	}*/
 
 }
@@ -442,7 +442,7 @@ void reverse_dcs(void)
 			for (k=0;k<26;k++,count++)
 				_810mod[i][(int)(count/8)] += (read_dcs_pixel((i*35)+9+k,j+35) << (7 - (count % 8)));
 				//_810mod[i][(int)(count/8)] += (dcsbmp[(i*35)+9+k][j+35] << (7 - (count % 8)));
-		
+
 
 		count=0;
 	}

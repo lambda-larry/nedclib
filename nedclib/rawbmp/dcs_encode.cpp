@@ -25,7 +25,7 @@ void eight_ten_modulate(void)
 			mod5 = modtable[(raw2 & 0x0F)];
 			mod6 = modtable[(raw3 & 0xF0)>>4];
 			mod7 = modtable[(raw3 & 0x0F)];
-			
+
 			_810mod[i][((j*10)/8)+0] = ((mod0 & 0x1F) << 3) + ((mod1 & 0x1C) >> 2);
 			_810mod[i][((j*10)/8)+1] = ((mod1 & 0x03) << 6) + ((mod2 & 0x1F) << 1) + ((mod3 & 0x10) >> 4);
 			_810mod[i][((j*10)/8)+2] = ((mod3 & 0x0F) << 4) + ((mod4 & 0x1E) >> 1);
@@ -42,7 +42,7 @@ int fill=0;
 void draw_dcs_pixel(int x, int y)
 {
 	int i,j;
-	
+
 	switch(dpi_multiplier)
 	{
 	case 1:			//300 DPI
@@ -168,7 +168,7 @@ void init_dcs(void)
 		YYYYY   Z Z Z Z Z Z  Z Z Z Z Z Z   YYYYY
 		YYYYY                              YYYYY
 		 XXX                                XXX
-		  
+
 
 		  T                                  T
 		  A                                  A
@@ -204,7 +204,7 @@ void init_dcs(void)
 	else
 		start_address=1;*/
 	start_address=raw[1][1];
-	
+
 	for (j=0;j<dotcodelen;j++)
 	{
 		draw_sync_marker((j*35)+2,2);
@@ -233,7 +233,7 @@ void flipbmp(void)
 
 	if(dotcodelen != 28)
 		width = 639 * dpi_multiplier;
-	
+
 	for(i=0;i<(height/2);i++)
 		for(j=0;j<width;j++)
 		{
@@ -258,7 +258,7 @@ void makebmp(void)
         int width=((dotcodelen*35)+9)*dpi_multiplier;
        // if(dotcodelen == 18)
        //         width=639*dpi_multiplier;
-	
+
 	/*if (bmplen == 0x7C)
 	{*/
 
@@ -287,7 +287,7 @@ void makebmp(void)
 
 void make_dcs(void)
 {
-	
+
 	int i, j, k, count=0;
 	fill=0;
 	for(i=0;i<dotcodelen;i++)

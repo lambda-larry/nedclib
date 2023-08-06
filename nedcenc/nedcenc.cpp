@@ -176,7 +176,7 @@ int main(int argc, char* argv[])
 				if(hexinput)
 					break;
 				signature_str[j++]=argv[signature][i];
-				break;	
+				break;
 			}
 			i++;
 		}
@@ -226,10 +226,10 @@ int main(int argc, char* argv[])
 	}
 	if(i!=0)
 		return i;
-	
 
-	
-	
+
+
+
 
 	return 0;
 }
