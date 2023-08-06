@@ -192,7 +192,7 @@ NEDCLIB_API int is_bmp(const char *bmpfile)
 	unsigned short bmp_header;
 	unsigned int bmp_size;
 	unsigned int file_size;
-	if(fopen_s(&f,bmpfile,"rb"))
+	if ((f = fopen(bmpfile, "rb")) == NULL)
 		return 0;
 	fread(&bmp_header,2,1,f);
 	fread(&bmp_size,4,1,f);

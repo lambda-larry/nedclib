@@ -600,9 +600,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	//f=fopen(argv[filename],"rb");
-	//if(f==NULL)
-	if(fopen_s(&f,argv[filename],"rb"))
+	if ((f = fopen(argv[filename], "rb")) == NULL)
 	{
 		printf("Error: VPK file could not be opened for reading\n");
 		//Could not open vpk file
@@ -792,7 +790,7 @@ int main(int argc, char* argv[])
 				snprintf(fn,255,"%s.%.2d.bin",argv[basename],i);
 			else
 				snprintf(fn,255,"%.2d.bin",i);
-			if(fopen_s(&f,fn,"wb"))
+			if ((f = fopen(fn, "wb")) == NULL)
 			{
 				printf("Unable to create Dotcode set\n");
 				return 1;

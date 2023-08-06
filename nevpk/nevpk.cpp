@@ -160,10 +160,9 @@ int main(int argc, char* argv[])
 		if(!strcmp(argv[i],"-log"))
 		{
 			i++;
-			if(fopen_s(&log,argv[i],"w")!=0)
+			if ((log = fopen(argv[i], "w")) == NULL)
 			{
 				printf("Failed to open log file\n");
-				log=NULL;
 			}
 		}
 
@@ -224,8 +223,7 @@ int main(int argc, char* argv[])
 	log_write("\n");
 
 
-	//f=;
-	if(fopen_s(&f,argv[file_in],"rb")!=0)
+	if((f = fopen(argv[file_in], "rb")) == NULL)
 	{
 		printf("Unable to open input file %s\n",argv[file_in]);
 		return 1;
@@ -374,7 +372,7 @@ int main(int argc, char* argv[])
 			log_write("LZ Window: %d\n",lzwindow);
 			log_write("LZ Size: %d\n",lzsize);
 		}
-		if(fopen_s(&f,argv[file_out],"wb")!=0)
+		if ((f = fopen(argv[file_out], "wb")) == NULL)
 		{
 			printf("Unable to open output file %s\n",argv[file_out]);
 			return 1;
@@ -383,7 +381,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		if(fopen_s(&f,argv[file_out],"wb")!=0)
+		if ((f = fopen(argv[file_out], "wb")) == NULL)
 		{
 			printf("Unable to open output file %s\n",argv[file_out]);
 			return 1;

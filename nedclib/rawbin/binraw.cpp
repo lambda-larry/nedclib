@@ -164,7 +164,7 @@ NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 
 	initialize_rs();
 
-	if(fopen_s(&f,binfile,"rb"))
+	if ((f = fopen(binfile, "rb")) == NULL)
 		return -1; //Input file not opened.
 
 	count=count_bin(f);
@@ -235,14 +235,17 @@ NEDCLIB_API int bin2raw(const char *binfile, const char *rawfile)
 
 		if(MultiStrip)
 		{
-			if(fopen_s(&g,rawfile,"rb+"))
-				if(fopen_s(&g,rawfile,"wb"))
-					return -4;
+			if ((g = fopen(rawfile, "rb+")) == NULL)
+				return -4;
+			fclose(g);
+
+			if ((g = fopen(rawfile, "wb")) == NULL)
+				return -4;
 			fseek(g,0,SEEK_END);  //Append raw to end of existing raw file.
 		}
 		else
 		{
-			if(fopen_s(&g,rawfile,"wb"))
+			if ((g = fopen(rawfile, "wb")) == NULL)
 				return -4;
 		}
 		fwrite(raw,1,j+k,g);
@@ -440,14 +443,17 @@ NEDCLIB_API int bin2raw_f(const unsigned char *bin, const char *rawfile, int siz
 
 	if(MultiStrip)
 	{
-		if(fopen_s(&g,rawfile,"rb+"))
-			if(fopen_s(&g,rawfile,"wb"))
-				return -4;
+		if ((g = fopen(rawfile, "rb+")) == NULL)
+			return -4;
+		fclose(g);
+
+		if ((g = fopen(rawfile, "wb")) == NULL)
+			return -4;
 		fseek(g,0,SEEK_END);  //Append raw to end of existing raw file.
 	}
 	else
 	{
-		if(fopen_s(&g,rawfile,"wb"))
+		if ((g = fopen(rawfile, "wb")) == NULL)
 			return -4;
 	}
 	fwrite(raw,1,j+k,g);
@@ -494,7 +500,7 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 
 	initialize_rs();
 
-	if(fopen_s(&f,rawfile,"rb"))
+	if ((f = fopen(rawfile, "rb")) == NULL)
 		return -1; //Input file not opened.
 	numraw=count_raw(f);
 	if(numraw==0)
@@ -580,9 +586,11 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 
 		if(MultiStrip)
 		{
-			if(fopen_s(&g,filename,"rb+"))
-				if(fopen_s(&g,filename,"wb"))
-					return -4;
+			if ((g = fopen(filename, "rb+")) == NULL)
+				return -4;
+			fclose(g);
+			if ((g = fopen(filename, "wb")) == NULL)
+				return -4;
 			if(!count_bin(g))
 			{
 				fseek(g,0,SEEK_SET);
@@ -596,7 +604,7 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 		else
 		{
 			bin_type=0;
-			if(fopen_s(&g,filename,"wb"))
+			if ((g = fopen(filename, "wb")) == NULL)
 				return -4;
 		}
 		//fwrite(raw,1,j+k,g);
@@ -648,7 +656,7 @@ NEDCLIB_API int fixraw(const char *rawfile)
 
 	initialize_rs();
 
-	if(fopen_s(&f,rawfile,"rb+"))
+	if ((f = fopen(rawfile, "rb+")) == NULL)
 		return -1; //Input file not opened.
 	num_dotcodes = count_raw(f);
 
