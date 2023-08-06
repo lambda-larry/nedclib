@@ -17,7 +17,7 @@ void log_only_write(const char* str, ...)
 	char tmpstr[MAX_LOG_STR];
 	va_list args;
 	va_start(args,str);
-	vsprintf_s(tmpstr,MAX_LOG_STR-1,str,args);
+	vsnprintf(tmpstr,MAX_LOG_STR-1,str,args);
 	va_end(args);
 	if(log!=NULL)
 		fprintf(log,tmpstr);
@@ -28,7 +28,7 @@ NEDCLIB_API void log_write(const char* str, ...)
 	char tmpstr[MAX_LOG_STR];
 	va_list args;
 	va_start(args,str);
-	vsprintf_s(tmpstr,MAX_LOG_STR-1,str,args);
+	vsnprintf(tmpstr,MAX_LOG_STR-1,str,args);
 	va_end(args);
 	if(verbose==1)
 		printf(tmpstr);
