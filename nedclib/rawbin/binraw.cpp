@@ -574,9 +574,9 @@ NEDCLIB_API int raw2bin(const char *rawfile, const char *binfile)
 
 
 		if((numraw>1)&&(MultiStrip==0))
-			sprintf_s(filename,255,"%s-%.2d.bin",binfile,k+1);
+			snprintf(filename,255,"%s-%.2d.bin",binfile,k+1);
 		else
-			sprintf_s(filename,255,"%s",binfile);
+			snprintf(filename,255,"%s",binfile);
 
 		if(MultiStrip)
 		{

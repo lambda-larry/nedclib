@@ -106,9 +106,9 @@ NEDCLIB_API int raw2bmp(const char *rawfile, const char *bmpfile)
 			//flipbmp();
 			makebmp();
 			if(num_raw==1)
-				sprintf_s(filename,255,"%s.bmp",bmpfile);
+				snprintf(filename,255,"%s.bmp",bmpfile);
 			else
-				sprintf_s(filename,255,"%s-%.2d.bmp",bmpfile,i+1);
+				snprintf(filename,255,"%s-%.2d.bmp",bmpfile,i+1);
 			if(!fopen_s(&g,filename,"wb"))
 			{
 				write_bmp(g);
@@ -159,9 +159,9 @@ NEDCLIB_API int raw2bmp_f(const unsigned char *rawdata, const char *bmpfile)
 			//flipbmp();
 			makebmp();
 			if(num_raw==1)
-				sprintf_s(filename,255,"%s.bmp",bmpfile);
+				snprintf(filename,255,"%s.bmp",bmpfile);
 			else
-				sprintf_s(filename,255,"%s-%.2d.bmp",bmpfile,i+1);
+				snprintf(filename,255,"%s-%.2d.bmp",bmpfile,i+1);
 			if(fopen_s(&g,filename,"wb"))
 			{
 				write_bmp(g);

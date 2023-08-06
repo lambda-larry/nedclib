@@ -789,9 +789,9 @@ int main(int argc, char* argv[])
 		{
 
 			if(basename)
-				sprintf_s(fn,255,"%s.%.2d.bin",argv[basename],i);
+				snprintf(fn,255,"%s.%.2d.bin",argv[basename],i);
 			else
-				sprintf_s(fn,255,"%.2d.bin",i);
+				snprintf(fn,255,"%.2d.bin",i);
 			if(fopen_s(&f,fn,"wb"))
 			{
 				printf("Unable to create Dotcode set\n");
@@ -804,9 +804,9 @@ int main(int argc, char* argv[])
 		if(raw)
 		{
 			if(basename)
-				sprintf_s(fn2,255,"%s-%.2d.raw",argv[basename],i);
+				snprintf(fn2,255,"%s-%.2d.raw",argv[basename],i);
 			else
-				sprintf_s(fn2,255,"%.2d.raw",i);
+				snprintf(fn2,255,"%.2d.raw",i);
 			if(bin2raw_f(carddata,fn2,cardsize))
 			{
 				return 1;
@@ -816,9 +816,9 @@ int main(int argc, char* argv[])
 		if(bmp)
 		{
 			if(basename)
-				sprintf_s(fn,255,"%s-%.2d",argv[basename],i);
+				snprintf(fn,255,"%s-%.2d",argv[basename],i);
 			else
-				sprintf_s(fn,255,"%.2d",i);
+				snprintf(fn,255,"%.2d",i);
 			if(!raw)
 			{
 				if(bin2raw_d(carddata,rawdata,cardsize))
