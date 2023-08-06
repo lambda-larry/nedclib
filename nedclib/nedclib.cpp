@@ -1,7 +1,5 @@
 // nedclib.cpp : Defines the entry point for the DLL application.
 //
-
-#include "stdafx.h"
 #include <stdio.h>
 #include <malloc.h>
 
@@ -217,6 +215,7 @@ NEDCLIB_API int MultiStrip=0;
 
 
 #ifdef NEDCLIB_PLATFORM_WIN
+#include <windows.h>
 
 #ifdef _MANAGED
 #pragma managed(push, off)

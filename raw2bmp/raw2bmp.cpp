@@ -1,7 +1,6 @@
 // raw2bmp.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include "../nedclib/nedclib.h"
 #include <stdio.h>
 #include <stdlib.h>
