@@ -340,8 +340,6 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 
 	int max_bitcount = 0;
 
-	int count1, count2;
-
 	int bitcounts[32] = {
 		0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0,
@@ -487,7 +485,6 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 
 	while(treenodes > 1)
 	{
-		count1 = count2 = -1;
 		if(treenodes == 2)
 			ptr = treeroot;
 		else
@@ -560,7 +557,6 @@ tree_node* read_huffman_tree(const unsigned char *buf)
 	struct tree_node *pointer[256];
 
 	int tree_nodes=0;
-	int node_pointer = 255;
 	int i;
 //	memset(huffman_tree,0,sizeof(huffman_tree));
 
@@ -1030,8 +1026,6 @@ int read_tree_value(tree_node *tree, const unsigned char *buf)
 	tree_node *ptr;
 	int tmp;
 
-	int count=0;
-
 	ptr = tree;
 	if(ptr==NULL)
 	{
@@ -1071,7 +1065,6 @@ NEDCLIB_API int vpk_decompress(const unsigned char *vpk, FILE *f)
 
 	struct tree_node *ptr;
 
-	int decompress_buffer_pointer=0;
 	int size,method;
 
 	int i;

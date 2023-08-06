@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 
 	char filename[256];
 
-	int i,j;
+	int i;
 	int OptI=0;
 	int InFile;
 	int OptO=0;
