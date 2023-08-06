@@ -287,24 +287,24 @@ void write_huffman_tree(tree_node *tree, FILE *f,  int root=1)
 	if(tree[0].node == 1)
 	{
 		if(f!=NULL)
-		log_write("(");
+			log_write("(");
 
 		write_huffman_tree(tree[0].left,f,0);
 
 		if(f!=NULL)
-		log_write(",");
+			log_write(",");
 
 		write_huffman_tree(tree[0].right,f,0);
 
 		if(f!=NULL)
-		log_write(")");
+			log_write(")");
 		write_bits(1,1,f);
 
 		if(root==1)
 		{
 			write_bits(1,1,f);
 			if(f!=NULL)
-			log_write("\n");
+				log_write("\n");
 		}
 	}
 	else
@@ -315,7 +315,7 @@ void write_huffman_tree(tree_node *tree, FILE *f,  int root=1)
 		if(root)
 			write_bits(1,1,f);
 		if(f!=NULL)
-		log_write("%d",tree[0].data);
+			log_write("%d",tree[0].data);
 		if(root)
 			if(f!=NULL)
 				log_write("\n");
@@ -454,7 +454,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 				}
 			}
 			if(f!=NULL)
-			log_write("%.5d:%.3d\n",bitcounts[i],i);
+				log_write("%.5d:%.3d\n",bitcounts[i],i);
 
 
 			ptr = create_treenode();
@@ -793,7 +793,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 	if(compression_level == 0)
 	{
 		if(f!=NULL)
-		log_write("Writing vpk data\n");
+			log_write("Writing vpk data\n");
 
 		write_bits(0x03,2,f);
 		for(i=0;i<size;i++)
@@ -803,7 +803,7 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 	else if (compression_level == 1)
 	{
 		if(f!=NULL)
-		log_write("Writing vpk data\n");
+			log_write("Writing vpk data\n");
 
 		move_offset = 0;
 		size_offset = 0;
@@ -865,15 +865,15 @@ NEDCLIB_API int NVPK_compress(const unsigned char *buf, int size, int compressio
 	else if (compression_level >= 2)
 	{
 		if(f!=NULL)
-		log_write("Writing huffman trees\n");
+			log_write("Writing huffman trees\n");
 		if(f!=NULL)
-		log_write("----- Move Tree Structure/Frequency Counts-----\n");
+			log_write("----- Move Tree Structure/Frequency Counts-----\n");
 		movetree = create_huffman_tree(move_t,move_offset,f,method,0);
 		if(f!=NULL)
-		log_write("----- Size Tree Structure/Frequency Counts-----\n");
+			log_write("----- Size Tree Structure/Frequency Counts-----\n");
 		sizetree = create_huffman_tree(size_t,size_offset,f,0,1);
 		if(f!=NULL)
-		log_write("Writing vpk data\n");
+			log_write("Writing vpk data\n");
 
 		move_offset = 0;
 		size_offset = 0;
