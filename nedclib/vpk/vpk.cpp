@@ -477,7 +477,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 
 		}
 		else
-			treeroot[0].look_up[i] = (tree_node*)(NULL + 1);
+			treeroot[0].look_up[i] = (tree_node*)1;
 	}
 	if(f!=NULL)
 		log_write("\n");
@@ -537,7 +537,7 @@ tree_node* create_huffman_tree(unsigned short *buf, int count, FILE *f, int meth
 
 	for(i=0;i<32;i++)
 	{
-		if(treeroot[0].look_up[i] == (tree_node*)(NULL + 1))
+		if(treeroot[0].look_up[i] == (tree_node*)1)
 			treeroot[0].look_up[i] = NULL;
 		else
 			get_treenode(treeroot,i,0,0,1);
